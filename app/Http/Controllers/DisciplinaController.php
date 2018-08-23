@@ -49,7 +49,8 @@ class DisciplinaController extends Controller
      */
     public function show(disciplina $disciplina)
     {
-        //
+	    //
+	    return view('disciplinas.show', compact('disciplina'));
     }
 
     /**
