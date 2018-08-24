@@ -14,8 +14,7 @@ class DisciplinaController extends Controller
      */
     public function index()
     {
-	    //
-	    //return Disciplina::all();
+	    // Método para mostrar todas as disciplinas cadastradas
 	    $disciplinas = Disciplina::all();
 	    return view('disciplinas.index', compact('disciplinas'));
     }
@@ -27,7 +26,8 @@ class DisciplinaController extends Controller
      */
     public function create()
     {
-        //
+	    // Método para gerar o formulário de cadastro de nova disciplina
+	    return view('disciplinas.create');
     }
 
     /**
@@ -38,7 +38,12 @@ class DisciplinaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+	    // Método para salvar nova disciplina no banco de dados
+	    $disciplina = new Disciplina;
+	    $disciplina->titulo = $request->titulo;
+	    $disciplina->ementa = $request->ementa;
+	    $disciplina->save();
+	    return redirect('/');
     }
 
     /**
@@ -49,7 +54,7 @@ class DisciplinaController extends Controller
      */
     public function show(disciplina $disciplina)
     {
-	    //
+	    // Método para mostrar detalhes das disciplinas
 	    return view('disciplinas.show', compact('disciplina'));
     }
 
