@@ -30,4 +30,9 @@ class CreateDisciplinasTable extends Migration
     {
         Schema::dropIfExists('disciplinas');
     }
+
+    public function turmas()
+    {
+	    return $this->hasMany('App/Turma');
+    }
 }
