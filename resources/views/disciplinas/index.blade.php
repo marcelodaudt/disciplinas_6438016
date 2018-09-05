@@ -1,4 +1,5 @@
 # resources/views/disciplinas/index.blade.php
+@extends('layouts.master')
 
 <ul>
 @foreach ($disciplinas as $disciplina)

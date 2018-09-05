@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class DisciplinaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -107,16 +112,16 @@ class DisciplinaController extends Controller
 
     public function storeTurma(Request $request, Disciplina $disciplina)
     {
-           // Método para salvar uma turma
-           $turma = new \App\Turma;
-           $turma->ministrante = $request->ministrante;
-	   $turma->inicio = $request->inicio;
-	   $turma->fim = $request->fim;
-	   $turma->bibliografia = $request->bibliografia;
-	   $turma->disciplina_id = $disciplina->id;
+        // Método para salvar uma turma
+        $turma = new \App\Turma;
+        $turma->ministrante = $request->ministrante;
+	    $turma->inicio = $request->inicio;
+	    $turma->fim = $request->fim;
+	    $turma->bibliografia = $request->bibliografia;
+	    $turma->disciplina_id = $disciplina->id;
 
-	   $disciplina->turmas()->save($turma);
-	   return redirect("/disciplinas/$disciplina->id");
+	    $disciplina->turmas()->save($turma);
+	    return redirect("/disciplinas/$disciplina->id");
     }
 
 }
