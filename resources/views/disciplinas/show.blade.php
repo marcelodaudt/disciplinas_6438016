@@ -1,5 +1,6 @@
 @extends('layouts.master')
 
+@section('content')
 <h1>{{ $disciplina->titulo }}</h1>
 <p>{{ $disciplina->ementa }}</p>
 <h2>Turmas:</h2>
@@ -9,3 +10,4 @@
     </div>
 @endforeach
 <p><a href="/disciplinas/{{ $disciplina->id }}/turmas/create">Inserir Turma</a></p>
+@endsection

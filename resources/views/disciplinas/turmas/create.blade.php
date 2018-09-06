@@ -1,5 +1,6 @@
 @extends('layouts.master')
 
+@section('content')
 <form method="POST" action="/disciplinas/{{ $disciplina_id }}/turmas">
     {{ csrf_field() }}
 
@@ -13,3 +14,4 @@
 
     <button type="submit" class"btn btn-success">Salva</button>
 </form>
+@endsection
