@@ -9,7 +9,7 @@ class DisciplinaController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'show']);
+        $this->middleware('auth')->except(['index', 'show', 'search']);
     }
 
     /**
@@ -102,6 +102,13 @@ class DisciplinaController extends Controller
 	    // Método para excluir uma disciplina
 	    $disciplina->delete();
 	    return redirect('/');
+    }
+
+    public function search(Request $request)
+    {
+        $text = $request->text;
+        $disciplinas = Disciplina::where('titulo', 'LIKE', "%{$text}%")->get();
+        return view('disciplinas.index', compact('disciplinas'));
     }
 
     public function createTurma($disciplina_id)
