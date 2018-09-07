@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\disciplina;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class DisciplinaController extends Controller
 {
@@ -122,8 +123,8 @@ class DisciplinaController extends Controller
         // Método para salvar uma turma
         $turma = new \App\Turma;
         $turma->ministrante = $request->ministrante;
-	    $turma->inicio = $request->inicio;
-	    $turma->fim = $request->fim;
+	    $turma->inicio = Carbon::createFromFormat('d/m/Y',$request->inicio);
+	    $turma->fim = Carbon::createFromFormat('d/m/Y',$request->fim);
 	    $turma->bibliografia = $request->bibliografia;
 	    $turma->disciplina_id = $disciplina->id;
 
